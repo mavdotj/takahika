@@ -8,10 +8,12 @@
       "**/node_modules",
       "./game",
       "./.vscode",
-      "**/node_modules",
-      "**/node_modules"
+      "./.github"
     ],
-    "include": [],
+    "include": [
+      "./client.ts",
+      "./main.ts"
+    ],
     "entrypoint": "main.ts"
   },
   "imports": {
