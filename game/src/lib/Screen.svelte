@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang=ts>
     import { onMount } from "svelte";
     import { game } from "./state";
     import Color from "colorjs.io";
@@ -71,7 +71,7 @@
 
     const rerenderValue = writable()
     onMount(async () => {
-        let ctx = canvas.getContext("2d");
+        let ctx = canvas.getContext("2d", { alpha: false });
         if (!ctx) throw new Error("unable to get ctx");
         const CANVAS_SIZE = BOX_SIZE * 100;
         canvas.width = CANVAS_SIZE;
@@ -81,8 +81,9 @@
         rerenderValue.subscribe(() => {
             render(ctx, font);
         })
+        setTimeout(() => rerender(), 400)
     });
 </script>
 
-<canvas class="h-96" bind:this={canvas}></canvas>
+<canvas class="h-96" on:click={rerender}  bind:this={canvas}></canvas>
 <svelte:window on:focus={rerender} />

@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
 
+export const START_GUESSES = 3;
 
 export type GridNum = {
     value: number,
@@ -29,7 +30,7 @@ function createGame(): Game {
     const grid = shuffle(fillGrid(baseGrid(answer), answer));
 
     return {
-        guessesLeft: 3,
+        guessesLeft: START_GUESSES,
         grid,
         answer,
         modal: false,

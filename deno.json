@@ -8,7 +8,8 @@
       "**/node_modules",
       "./game",
       "./.vscode",
-      "./.github"
+      "./.github",
+      ".gitignore"
     ],
     "include": [
       "./client.ts",

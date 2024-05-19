@@ -2,6 +2,7 @@
     import Screen from './lib/Screen.svelte';
     import Keyboard from './lib/Keyboard.svelte';
     import Modal from './lib/Modal.svelte';
+    import Heartbar from './lib/Heartbar.svelte';
 </script>
 
 <Modal />
@@ -11,6 +12,8 @@
     <div class="flex flex-row mb-4 items-center justify-center">
       <Screen />
     </div>
+    <span class="mb-1 text-xs">(If the grid does not load, or the text looks old, click/tap it)</span>
+    <Heartbar />
     <Keyboard />
   </div>
 </main>

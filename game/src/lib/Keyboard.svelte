@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang=ts>
     import { Delete, HelpCircle, Shuffle, ThumbsUp } from "svelte-lucide";
     import { game } from "./state";
     let text = "";
