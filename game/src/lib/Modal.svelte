@@ -1,10 +1,10 @@
 <script lang=ts>
     import { game } from "./state";
-    let button: HTMLButtonElement;
+    let HTMLbutton: HTMLButtonElement;
     onMount(() => {
         game.subscribe(g => {
             if(g.modal !== false) {
-                button.focus()
+                HTMLbutton.focus()
             }
         })
     })
@@ -16,7 +16,7 @@
         <h3 class="font-bold text-lg" class:text-success={$game.modal=="pass"} class:text-error={$game.modal=="fail"}>{#if $game.modal == "pass"}You won!{:else if $game.modal == "fail"}You Failed{/if}</h3>
         <p class="py-4">The answer was {$game.answer}</p>
         <div class="modal-action">
-            <button bind:this={button} on:click={() => game.reset()} disabled={$game.modal == false} class="btn">Ok</button>
+            <button bind:this={HTMLbutton} on:click={() => game.reset()} disabled={$game.modal == false} class="btn">Ok</button>
         </div>
     </div>
 </div>
