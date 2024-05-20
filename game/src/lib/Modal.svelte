@@ -6,16 +6,16 @@
     let answer: number = 0;
     const LOSE_MESSAGES = [
         "Bruh...",
-        "💀...",
+        "\u{1f480}...",
         "That wasn't right.",
         "C'mon this is easy.",
         "Womp womp...",
-        "🤣🫵🏾",
+        "\u{1f923} \u{1faf5}\u{1f3fe}",
         "BOO YOU STINK",
         "What made you think that was right?"
     ];
     const WIN_MESSAGES = [
-        "YEAH! 😎",
+        "YEAH! \u{1f60e}",
         "Good job",
         "RAHHHHH!!!!!",
         "You aren't like the other guy"
