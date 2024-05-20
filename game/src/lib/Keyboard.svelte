@@ -47,7 +47,7 @@
 </div>
 <div class="flex flex-row gap-x-2 mt-4 scale-90">
     <button on:click={submit}  class="btn btn-circle btn-sm md:btn-md" disabled={$game.modal !== false}><ThumbsUp /></button>
-    {#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as number  ($game.answer+number)}
+    {#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as number (number)}
         <button on:click={addButton(number)} class="btn btn-circle btn-outline btn-primary btn-sm md:btn-md"  disabled={$game.modal !== false}>{number}</button>
     {/each}
     <button on:click={remove}  class="btn btn-circle btn-sm md:btn-md"  disabled={$game.modal !== false}><Delete /></button>
