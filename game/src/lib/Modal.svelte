@@ -1,6 +1,7 @@
 <script lang=ts>
-    import { game } from "./state";
-    let HTMLbutton: HTMLButtonElement;
+    import { onMount } from "svelte";
+    import { game } from "./state"
+    let HTMLbutton: HTMLButtonElement
     onMount(() => {
         game.subscribe(g => {
             if(g.modal !== false) {

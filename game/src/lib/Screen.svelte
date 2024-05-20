@@ -1,33 +1,33 @@
 <script lang=ts>
-    import { onMount } from "svelte";
-    import { game } from "./state";
-    import Color from "colorjs.io";
-    import { writable } from "svelte/store";
+    import { onMount } from "svelte"
+    import { game } from "./state"
+    import Color from "colorjs.io"
+    import { writable } from "svelte/store"
 
     function toHex(color: Color) {
-        const newColor = Array.from(color.a98rgb);
+        const newColor = Array.from(color.a98rgb)
         return newColor.reduce<string>((pre, value) => {
-            const fullVal = Math.round(value * 255);
-            return pre + (fullVal >= 16 ? "" : "0") + fullVal.toString(16);
+            const fullVal = Math.round(value * 255)
+            return pre + (fullVal >= 16 ? "" : "0") + fullVal.toString(16)
         }, "#");
     }
     function reshape<T>(array: Array<T>, rows: number, cols: number): T[][] {
-        const newArray: T[][] = [];
+        const newArray: T[][] = []
 
         for (var r = 0; r < rows; r++) {
-            var row = [];
+            var row = []
             for (var c = 0; c < cols; c++) {
-                var i = r * cols + c;
+                var i = r * cols + c
                 if (i < array.length) {
-                    row.push(array[i]);
+                    row.push(array[i])
                 }
             }
-            newArray.push(row);
+            newArray.push(row)
         }
-        return newArray;
+        return newArray
     }
     async function loadFont() {
-        const FONT_VALUE = `${BOX_SIZE * 6}px 'RocknRoll One`;
+        const FONT_VALUE = `${BOX_SIZE * 6}px 'RocknRoll One`
         await document.fonts.load(FONT_VALUE).then(() => {
             console.log(document.fonts.check(FONT_VALUE))
             rerender()

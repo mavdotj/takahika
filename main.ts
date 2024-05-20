@@ -12,4 +12,4 @@ router.get('/', (context) => {
 app.use(router.allowedMethods())
 app.use(router.routes())
 
-app.listen({ port: 80, hostname: '0.0.0.0' });
+app.listen({ port: 3030, hostname: '0.0.0.0' });

@@ -1,7 +1,7 @@
 <script lang=ts>
-    import { Delete, HelpCircle, Shuffle, ThumbsUp } from "svelte-lucide";
-    import { game } from "./state";
-    let text = "";
+    import { Delete, HelpCircle, Shuffle, ThumbsUp } from "svelte-lucide"
+    import { game } from "./state"
+    let text = ""
     $: number = parseInt(text)
     function submit() {
         if(text.length == 0) return
@@ -18,8 +18,7 @@
     }
 
     function handleKBD(e: KeyboardEvent) {
-        debugger;
-        if($game.modal) return;
+        if($game.modal) return
         if(e.code.startsWith("Digit")) {
             add(e.code[5])
         } else if(e.code == "Backspace") {

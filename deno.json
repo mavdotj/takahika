@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run main.ts"
   },
   "deploy": {
     "project": "f107d05b-99b4-4a68-95ea-ea12faf8d73a",
