@@ -1,6 +1,6 @@
 import { Application, Router } from "@oak/oak";
 import client from "./client.ts";
-const clientHTML = atob(client);
+const clientHTML = decodeURIComponent(atob(client));
 const app = new Application()
 const router = new Router()
 
