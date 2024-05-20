@@ -39,47 +39,47 @@
         font: string
     ) {
         ctx.reset()
-        var style = getComputedStyle(document.body);
-        const green = toHex(new Color(`oklch(${style.getPropertyValue("--su")})`));
-        const red = toHex(new Color(`oklch(${style.getPropertyValue("--er")})`));
-        const border = toHex(new Color( `oklch(${style.getPropertyValue("--b2")})`));
-        ctx.font = font;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.lineWidth = 15;
-        const numGrid = reshape($game.grid, 10, 10);
+        var style = getComputedStyle(document.body)
+        const green = toHex(new Color(`oklch(${style.getPropertyValue("--su")})`))
+        const red = toHex(new Color(`oklch(${style.getPropertyValue("--er")})`))
+        const border = toHex(new Color( `oklch(${style.getPropertyValue("--b2")})`))
+        ctx.font = font
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.lineWidth = 15
+        const numGrid = reshape($game.grid, 10, 10)
         for (const [x, _] of numGrid.entries()) {
             for (const [y, { value }] of numGrid[x].entries()) {
-                const X = x * BOX_SIZE * 10;
-                const Y = y * BOX_SIZE * 10;
-                const TEXT_X = X + BOX_SIZE * 5;
-                const TEXT_Y = Y + BOX_SIZE * 5;
-                ctx.fillStyle = value > $game.answer ? green : red;
-                ctx.strokeStyle = border;
-                ctx.fillRect(X, Y, BOX_SIZE * 10, BOX_SIZE * 10);
-                ctx.strokeRect(X, Y, BOX_SIZE * 10, BOX_SIZE * 10);
-                ctx.fillStyle = "white";
-                ctx.fillText(value.toString(), TEXT_X, TEXT_Y);
+                const X = x * BOX_SIZE * 10
+                const Y = y * BOX_SIZE * 10
+                const TEXT_X = X + BOX_SIZE * 5
+                const TEXT_Y = Y + BOX_SIZE * 5
+                ctx.fillStyle = value > $game.answer ? green : red
+                ctx.strokeStyle = border
+                ctx.fillRect(X, Y, BOX_SIZE * 10, BOX_SIZE * 10)
+                ctx.strokeRect(X, Y, BOX_SIZE * 10, BOX_SIZE * 10)
+                ctx.fillStyle = "white"
+                ctx.fillText(value.toString(), TEXT_X, TEXT_Y)
             }
         }
     }
-    let canvas: HTMLCanvasElement;
-    const BOX_SIZE = 25;
+    let canvas: HTMLCanvasElement
+    const BOX_SIZE = 25
     function rerender() {
         rerenderValue.set(Symbol())
     }
 
     const rerenderValue = writable()
     onMount(async () => {
-        let ctx = canvas.getContext("2d", { alpha: false });
-        if (!ctx) throw new Error("unable to get ctx");
-        const CANVAS_SIZE = BOX_SIZE * 100;
-        canvas.width = CANVAS_SIZE;
-        canvas.height = CANVAS_SIZE;
+        let ctx = canvas.getContext("2d", { alpha: false })
+        if (!ctx) throw new Error("unable to get ctx")
+        const CANVAS_SIZE = BOX_SIZE * 100
+        canvas.width = CANVAS_SIZE
+        canvas.height = CANVAS_SIZE
         const font = await loadFont()
         game.subscribe(rerender)
         rerenderValue.subscribe(() => {
-            render(ctx, font);
+            render(ctx, font)
         })
         setTimeout(() => rerender(), 400)
     });

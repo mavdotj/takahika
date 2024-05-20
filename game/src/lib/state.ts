@@ -1,6 +1,6 @@
-import { writable } from "svelte/store";
+import { writable } from "svelte/store"
 
-export const START_GUESSES = 3;
+export const START_GUESSES = 3
 
 export type GridNum = {
     value: number,
@@ -27,7 +27,7 @@ function shuffle(grid: GridNum[]): GridNum[] {
 
 function createGame(): Game {
     const answer = random(75, 25)
-    const grid = shuffle(fillGrid(baseGrid(answer), answer));
+    const grid = shuffle(fillGrid(baseGrid(answer), answer))
 
     return {
         guessesLeft: START_GUESSES,
@@ -40,7 +40,7 @@ function createGame(): Game {
 function fillGrid(base: GridNum[], answer: number) {
     for(const _ of new Array(100 - base.length).map((_,i) => i)) {
         const index = base.length
-        let value;
+        let value
         value = { value: random(100, 1) }
         do {
             value = { value: random(100, 1) }
@@ -55,13 +55,13 @@ function random(max: number, min: number): number {
 }
 
 function gameStore() {
-    const store = writable<Game>(createGame());
-    store.subscribe(console.log)
+    const store = writable<Game>(createGame())
+
     return {
         shuffle() {
-            store.update(v => {
-                v.grid = shuffle(v.grid)
-                return v
+            store.update(game => {
+                game.grid = shuffle(game.grid)
+                return game
             })
         },
         reset() {
@@ -69,25 +69,13 @@ function gameStore() {
         },
         guess(guess: number) {
             store.update(game => {
-                // if($game.guessesLeft > 0) {
-                //     game.update(game => {
-                //         game.guessesLeft = game.guessesLeft - 1;
-                //         game.tolerance = 1/3 * game.guessesLeft || 0.1;
-                //         if(game.guessesLeft === 0) game.modal = true;
-                //         if(input.detail === game.answer) {
-                //             game.isCorrect = true;
-                //             game.modal = true;
-                //         }
-                //         return game;
-                //     })
-                // } else {
-                //     $game.modal = true;
-                // }
                 if(game.guessesLeft > 0) {
-                    game.guessesLeft--;
                     if(game.answer === guess) {
                         game.modal = 'pass'
-                    } else if(game.guessesLeft === 0) game.modal = 'fail'
+                    } else {
+                        game.guessesLeft--
+                        if(game.guessesLeft === 0) game.modal = 'fail'
+                    }
                 } else {
                     game.modal = 'fail'
                 }
