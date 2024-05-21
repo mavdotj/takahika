@@ -86,4 +86,5 @@ function gameStore() {
     }
 }
 
+export const sidebar = writable<boolean>()
 export const game = gameStore()

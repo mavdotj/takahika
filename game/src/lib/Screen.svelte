@@ -3,6 +3,7 @@
     import { game } from "./state"
     import Color from "colorjs.io"
     import { writable } from "svelte/store"
+    import { mediaQuery } from "svelte-legos"
 
     function toHex(color: Color) {
         const newColor = Array.from(color.a98rgb)
@@ -28,10 +29,7 @@
     }
     async function loadFont() {
         const FONT_VALUE = `${BOX_SIZE * 6}px 'RocknRoll One`
-        await document.fonts.load(FONT_VALUE).then(() => {
-            console.log(document.fonts.check(FONT_VALUE))
-            rerender()
-        })
+        await document.fonts.load(FONT_VALUE).then(() => rerender())
         return FONT_VALUE
     }
     function render(
@@ -70,6 +68,7 @@
     }
 
     const rerenderValue = writable()
+    const prefersDark = mediaQuery("(prefers-color-scheme: dark)");
     onMount(async () => {
         let ctx = canvas.getContext("2d", { alpha: false })
         if (!ctx) throw new Error("unable to get ctx")
@@ -81,6 +80,7 @@
         rerenderValue.subscribe(() => {
             render(ctx, font)
         })
+        prefersDark.subscribe(rerender)
         setTimeout(() => rerender(), 400)
     });
 </script>

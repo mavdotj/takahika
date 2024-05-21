@@ -5,14 +5,13 @@
     let HTMLbutton: HTMLButtonElement;
     let answer: number = 0;
     const LOSE_MESSAGES = [
-        "Bruh...",
-        "\u{1f480}...",
+        "Bruh \u{1f480}...",
         "That wasn't right.",
         "C'mon this is easy.",
         "Womp womp...",
-        "\u{1f923} \u{1faf5}\u{1f3fe}",
+        "You suck \u{1f923} \u{1faf5}\u{1f3fe}",
         "BOO YOU STINK",
-        "What made you think that was right?"
+        "What made you think that was right? \u{1f62d}"
     ];
     const WIN_MESSAGES = [
         "YEAH! \u{1f60e}",
