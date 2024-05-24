@@ -11,13 +11,12 @@
         "Womp womp...",
         "You suck \u{1f923} \u{1faf5}\u{1f3fe}",
         "BOO YOU STINK",
-        "What made you think that was right? \u{1f62d}"
+        "What made you think that was right? \u{1f62d}",
     ];
     const WIN_MESSAGES = [
         "YEAH! \u{1f60e}",
         "Good job",
         "RAHHHHH!!!!!",
-        "You aren't like the other guy"
     ];
     const message = derived(game, game => {
         if(game.modal !== false) {

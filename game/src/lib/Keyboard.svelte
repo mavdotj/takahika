@@ -10,6 +10,7 @@
     }
 
     function add(value: string) {
+        if(text.length == 2) return
         text = text.concat(value)
     }
 

@@ -77,9 +77,7 @@
         canvas.height = CANVAS_SIZE
         const font = await loadFont()
         game.subscribe(rerender)
-        rerenderValue.subscribe(() => {
-            render(ctx, font)
-        })
+        rerenderValue.subscribe(render.bind(null, ctx, font))
         prefersDark.subscribe(rerender)
         setTimeout(() => rerender(), 400)
     });
