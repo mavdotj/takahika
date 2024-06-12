@@ -1,4 +1,5 @@
 <script lang=ts>
+    // I had some people cheating in the previous versions of the game, and since I plan to make a leaderboard, I decided to make this a canvas instead of pure html
     import { onMount } from "svelte"
     import { game } from "./state"
     import Color from "colorjs.io"
