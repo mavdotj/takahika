@@ -3,10 +3,10 @@
   import Keyboard from "./lib/Keyboard.svelte";
   import Modal from "./lib/Modal.svelte";
   import Heartbar from "./lib/Heartbar.svelte";
-  import Drawer from "./lib/Drawer.svelte";
+  import Wrapper from "./lib/Wrapper.svelte";
 </script>
 
-<Drawer>
+<Wrapper>
   <Modal />
   <main
     class="w-full h-full flex flex-col overflow-hidden items-center justify-center"
@@ -23,4 +23,4 @@
       <Keyboard />
     </div>
   </main>
-</Drawer>
+</Wrapper>

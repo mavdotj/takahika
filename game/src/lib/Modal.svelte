@@ -1,9 +1,12 @@
 <script lang=ts>
-    import { onMount } from "svelte";
-    import { game } from "./state"
-    import { derived } from "svelte/store";
-    let HTMLbutton: HTMLButtonElement = $state();
-    let answer: number = $state(0);
+    import { getContext } from "svelte-typed-context";
+    import { key } from "./key";
+
+    let { game } = getContext(key)!
+    let HTMLbutton: HTMLButtonElement;
+    let storedAnswer: number = $state(0);
+
+    let open = $derived(game.state !== 'play')
     const LOSE_MESSAGES = [
         "Bruh \u{1f480}...",
         "That wasn't right.",
@@ -18,32 +21,31 @@
         "Good job",
         "RAHHHHH!!!!!",
     ];
-    const message = derived(game, game => {
-        if(game.modal !== false) {
-            if(game.modal === "fail") {
+    const message = $derived.by(() => {
+        if(game.state !== 'play') {
+            if(game.state === "fail") {
                 return LOSE_MESSAGES[Math.floor(Math.random() * LOSE_MESSAGES.length)]
-            } else if(game.modal === "pass") {
+            } else if(game.state === "pass") {
                 return WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
             }
         }
     })
-    onMount(() => {
-        game.subscribe(g => {
-            if(g.modal !== false) {
-                HTMLbutton.focus()
-                answer = g.answer
-            }
-        })
+
+    $effect(() => {
+        if(open) {
+            HTMLbutton.focus()
+            storedAnswer = game.answer
+        }
     })
 </script>
 
-<input type="checkbox" checked={$game.modal !== false} class="modal-toggle" />
+<input type="checkbox" checked={open} class="modal-toggle" />
 <div class="modal" role="dialog">
     <div class="modal-box">
-        <h3 class="font-bold text-md" class:text-success={$game.modal=="pass"} class:text-error={$game.modal=="fail"}>{$message}</h3>
-        <p class="py-4">The answer was {answer}</p>
+        <h3 class="font-bold text-md" class:text-success={game.state=="pass"} class:text-error={game.state=="fail"}>{message}</h3>
+        <p class="py-4">{storedAnswer}</p>
         <div class="modal-action">
-            <button bind:this={HTMLbutton} onclick={() => game.reset()} disabled={$game.modal == false} class="btn">Ok</button>
+            <button bind:this={HTMLbutton} onclick={() => game.reset()} disabled={!open} class="btn">Ok</button>
         </div>
     </div>
 </div>
