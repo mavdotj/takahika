@@ -2,19 +2,18 @@ import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{svelte,js,ts,html,svg}', "./index.html"],
+  content: ["./src/**/*.{svelte,js,ts,html,svg}", "./index.html"],
   theme: {
     extend: {
       fontFamily: {
-        title: ["RocknRoll One"]
-      }
+        title: ["RocknRoll One"],
+      },
     },
     fontFamily: {
-      sans: ["RocknRoll One"]
-    }
+      sans: ["RocknRoll One"],
+    },
   },
   plugins: [
-    daisyui
+    daisyui,
   ],
-}
-
+};

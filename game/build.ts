@@ -1,1 +1,0 @@
-await Deno.writeTextFile("../client.ts", `export default "${btoa(encodeURIComponent(await Deno.readTextFile("./dist/index.html")))}"`)
