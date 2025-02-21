@@ -33,5 +33,4 @@ export async function loadFont() {
 		await delay(100);
 		font.value = FONT_VALUE;
 	});
-	// return FONT_VALUE
 }

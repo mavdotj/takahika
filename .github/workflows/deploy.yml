@@ -22,21 +22,16 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install step
-        run: "cd game && npm i"
+        run: "cd game && bun i"
 
       - name: Build step
-        run: "cd game && npm run build"
+        run: "cd game && bun run build"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "takahika"
-          entrypoint: "main.ts"
-          root: ""
+          root: "."

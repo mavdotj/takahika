@@ -12,12 +12,12 @@
       ".gitignore"
     ],
     "include": [
-      "./client.ts",
+      "./index.html",
       "./main.ts"
     ],
     "entrypoint": "main.ts"
   },
   "imports": {
-    "@oak/oak": "jsr:@oak/oak@^16.0.0"
+    "@bronti/wooter": "jsr:@bronti/wooter@^0.3.6"
   }
 }

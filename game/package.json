@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --host",
-		"build": "vite build && deno run -A build.ts",
+		"build": "vite build && cp ./dist/index.html ../index.html",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"format": "prettier --write .",
