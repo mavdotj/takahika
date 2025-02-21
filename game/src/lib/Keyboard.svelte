@@ -38,8 +38,8 @@
     <button onclick={() => sidebar.set(!$sidebar)} class="btn btn-circle btn-primary text-primary-content"  disabled={$game.modal !== false}>
         <Menu />
     </button>
-    <div class="flex-grow mx-4">
-        <input value={text} type="text" class="input text-center max-w-xs w-full !text-base-content  !input-bordered !cursor-default" disabled>
+    <div class="grow mx-4">
+        <input value={text} type="text" class="input text-center max-w-xs w-full text-base-content!  !input-bordered cursor-default!" disabled>
     </div>
     <button onclick={game.shuffle} class="btn btn-circle btn-primary text-primary-content"  disabled={$game.modal !== false}>
         <Shuffle />
