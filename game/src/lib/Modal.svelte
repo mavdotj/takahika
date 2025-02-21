@@ -2,8 +2,8 @@
     import { onMount } from "svelte";
     import { game } from "./state"
     import { derived } from "svelte/store";
-    let HTMLbutton: HTMLButtonElement;
-    let answer: number = 0;
+    let HTMLbutton: HTMLButtonElement = $state();
+    let answer: number = $state(0);
     const LOSE_MESSAGES = [
         "Bruh \u{1f480}...",
         "That wasn't right.",
@@ -43,7 +43,7 @@
         <h3 class="font-bold text-md" class:text-success={$game.modal=="pass"} class:text-error={$game.modal=="fail"}>{$message}</h3>
         <p class="py-4">The answer was {answer}</p>
         <div class="modal-action">
-            <button bind:this={HTMLbutton} on:click={() => game.reset()} disabled={$game.modal == false} class="btn">Ok</button>
+            <button bind:this={HTMLbutton} onclick={() => game.reset()} disabled={$game.modal == false} class="btn">Ok</button>
         </div>
     </div>
 </div>

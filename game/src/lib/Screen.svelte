@@ -62,7 +62,7 @@
             }
         }
     }
-    let canvas: HTMLCanvasElement
+    let canvas: HTMLCanvasElement = $state()
     const BOX_SIZE = 25
     function rerender() {
         rerenderValue.set(Symbol())

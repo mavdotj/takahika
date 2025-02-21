@@ -1,3 +1,5 @@
+// TODO: convert into class
+
 import { writable } from "svelte/store"
 
 export const START_GUESSES = 3

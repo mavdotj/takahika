@@ -1,11 +1,16 @@
 <script lang=ts>
     import { sidebar } from "./state";
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
 </script>
 
 <div class="drawer w-full h-full flex flex-col overflow-hidden items-center justify-center">
     <input type="checkbox" class="drawer-toggle" id="my-drawer" checked={$sidebar}>
     <div class="drawer-content">
-        <slot />
+        {@render children?.()}
     </div>
     <div class="drawer-side">
         <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
