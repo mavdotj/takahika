@@ -35,4 +35,5 @@ jobs:
         with:
           project: "takahika"
           entrypoint: "main.ts"
+          include: "main.ts,index.html,deno.json,deno.lock"
           root: "."

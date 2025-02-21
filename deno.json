@@ -13,8 +13,13 @@
     ],
     "include": [
       "./index.html",
-      "./main.ts"
+      "./main.ts",
+      "./deno.json",
+      "./deno.lock"
     ],
     "entrypoint": "main.ts"
+  },
+  "imports": {
+    "@bronti/wooter": "jsr:@bronti/wooter@^0.3.6"
   }
 }
