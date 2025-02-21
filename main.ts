@@ -1,4 +1,4 @@
-import { Wooter,c } from "@bronti/wooter";
+import { Wooter, c } from "jsr:@bronti/wooter@^0.3.6";
 
 const app = Wooter.withMethods();
 const html = Deno.readFileSync("./index.html")

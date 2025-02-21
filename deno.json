@@ -16,8 +16,5 @@
       "./main.ts"
     ],
     "entrypoint": "main.ts"
-  },
-  "imports": {
-    "@bronti/wooter": "jsr:@bronti/wooter@^0.3.6"
   }
 }

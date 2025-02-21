@@ -34,4 +34,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "takahika"
+          entrypoint: "main.ts"
           root: "."
